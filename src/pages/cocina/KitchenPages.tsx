@@ -268,7 +268,7 @@ export function KitchenOrdersPage() {
       />
 
       {notice && (
-        <p className="mb-4 rounded-xl bg-emerald-50 p-3 text-sm text-emerald-800">
+        <p role="status" aria-live="polite" className="mb-4 rounded-xl bg-emerald-50 p-3 text-sm text-emerald-800">
           {notice}
         </p>
       )}

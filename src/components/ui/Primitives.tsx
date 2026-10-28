@@ -17,7 +17,7 @@ export function PageTitle({ title, subtitle, action }: { title: string; subtitle
   return <div className="mb-6 flex flex-wrap items-center justify-between gap-4"><div><h1 className="text-2xl font-bold text-slate-900">{title}</h1><p className="mt-1 text-sm text-slate-500">{subtitle}</p></div>{action}</div>
 }
 export function SearchBox({ value, onChange, placeholder = 'Buscar...' }: { value: string; onChange: (v: string) => void; placeholder?: string }) {
-  return <label className="flex min-w-[200px] items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-slate-400 focus-within:border-red-400"><Search size={17}/><input className="w-full bg-transparent text-sm text-slate-700 outline-none placeholder:text-slate-400" value={value} onChange={e => onChange(e.target.value)} placeholder={placeholder}/></label>
+  return <label className="flex min-w-[200px] items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-slate-400 focus-within:border-red-400"><Search size={17}/><input aria-label={placeholder} className="w-full bg-transparent text-sm text-slate-700 outline-none placeholder:text-slate-400" value={value} onChange={e => onChange(e.target.value)} placeholder={placeholder}/></label>
 }
 export function StatusBadge({ status }: { status: string }) {
   const style = status === 'Listo' || status === 'Entregado' || status === 'Pagado' || status === 'Activo' ? 'bg-emerald-100 text-emerald-800' : status === 'Pendiente' ? 'bg-red-100 text-red-800' : status === 'En preparación' ? 'bg-amber-100 text-amber-800' : 'bg-slate-100 text-slate-700'

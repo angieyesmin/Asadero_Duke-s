@@ -1,6 +1,6 @@
 export type Product = { id: number; name: string; category: string; price: number; image: string; active: boolean }
 export type OrderItem = { productId: number; name: string; qty: number; price: number; note?: string }
-export type Order = { id: number; table: string; waiter: string; status: 'Pendiente' | 'En preparación' | 'Listo' | 'Entregado' | 'Pagado'; createdAt: string; items: OrderItem[]; note?: string; paid?: boolean }
+export type Order = { id: number; table?: string; waiter: string; status: 'Pendiente' | 'En preparación' | 'Listo' | 'Entregado' | 'Pagado'; createdAt: string; items: OrderItem[]; note?: string; paid?: boolean }
 
 export const products: Product[] = [
   { id: 1, name: 'Hamburguesa clásica', category: 'Hamburguesas', price: 120, image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=700&q=80', active: true },

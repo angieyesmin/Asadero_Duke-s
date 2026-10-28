@@ -47,3 +47,7 @@ a {
 *::selection {
   background: #fecaca;
 }
+:focus-visible {
+  outline: 3px solid #ea580c;
+  outline-offset: 2px;
+}

@@ -283,7 +283,7 @@ export function NewOrderPage() {
       />
 
       {notice && (
-        <div className="mb-4 rounded-xl bg-emerald-50 p-3 text-sm text-emerald-800">
+        <div role="status" aria-live="polite" className="mb-4 rounded-xl bg-emerald-50 p-3 text-sm text-emerald-800">
           {notice}
         </div>
       )}
@@ -693,7 +693,9 @@ export function ChargeOrderPage() {
             Seleccionar pedido
           </h2>
 
+          <label htmlFor="order-to-charge" className="sr-only">Pedido a cobrar</label>
           <select
+            id="order-to-charge"
             value={selected}
             onChange={(event) => {
               setSelected(event.target.value);
@@ -841,7 +843,7 @@ export function ChargeOrderPage() {
           </div>
 
           {notice && (
-            <p className="mt-3 rounded-lg bg-amber-50 p-3 text-sm text-amber-800">
+            <p role="status" aria-live="polite" className="mt-3 rounded-lg bg-amber-50 p-3 text-sm text-amber-800">
               {notice}
             </p>
           )}

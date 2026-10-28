@@ -104,7 +104,7 @@ export function AdminDashboard() {
       </div>
 
       <div className="mt-6 grid gap-6 xl:grid-cols-[1.4fr_1fr]">
-        <Card className="p-5">
+        <Card className="min-w-0 p-5">
           <div className="mb-4 flex items-center justify-between">
             <h2 className="font-bold">Pedidos recientes</h2>
             <span className="text-xs text-slate-500">
@@ -269,7 +269,7 @@ export function ProductsPage() {
       />
 
       {notice && (
-        <p className="mb-4 rounded-xl bg-emerald-50 p-3 text-sm text-emerald-800">
+        <p role="status" aria-live="polite" className="mb-4 rounded-xl bg-emerald-50 p-3 text-sm text-emerald-800">
           {notice}
         </p>
       )}
@@ -279,14 +279,18 @@ export function ProductsPage() {
           <h2 className="mb-4 font-bold">Registrar producto</h2>
 
           <div className="grid gap-3 md:grid-cols-4">
+            <label htmlFor="product-name" className="sr-only">Nombre del producto</label>
             <input
+              id="product-name"
               className="rounded-lg border p-3 text-sm"
               placeholder="Nombre del producto"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
 
+            <label htmlFor="product-price" className="sr-only">Precio</label>
             <input
+              id="product-price"
               className="rounded-lg border p-3 text-sm"
               type="number"
               min="1"
@@ -295,7 +299,9 @@ export function ProductsPage() {
               onChange={(e) => setPrice(e.target.value)}
             />
 
+            <label htmlFor="product-category" className="sr-only">Categoría</label>
             <select
+              id="product-category"
               className="rounded-lg border p-3 text-sm"
               value={category}
               onChange={(e) => setCategory(e.target.value)}
@@ -406,7 +412,9 @@ export function CategoriesPage() {
 
       <Card className="p-5">
         <div className="mb-5 flex flex-wrap gap-3">
+          <label htmlFor="new-category" className="sr-only">Nueva categoría</label>
           <input
+            id="new-category"
             className="min-w-0 flex-1 rounded-xl border border-slate-200 px-4 py-3"
             placeholder="Nueva categoría..."
             value={value}
@@ -513,21 +521,27 @@ export function UsersPage() {
       {show && (
         <Card className="mb-5 p-5">
           <div className="grid gap-3 md:grid-cols-4">
+            <label htmlFor="user-name" className="sr-only">Nombre completo</label>
             <input
+              id="user-name"
               className="rounded-lg border p-3"
               placeholder="Nombre completo"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
 
+            <label htmlFor="user-username" className="sr-only">Usuario</label>
             <input
+              id="user-username"
               className="rounded-lg border p-3"
               placeholder="Usuario"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
 
+            <label htmlFor="user-role" className="sr-only">Rol</label>
             <select
+              id="user-role"
               className="rounded-lg border p-3"
               value={role}
               onChange={(e) => setRole(e.target.value)}
@@ -740,9 +754,10 @@ export function CashCutPage() {
 
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
         <Card className="p-5">
-          <p className="text-sm text-slate-500">Fondo inicial</p>
+          <label htmlFor="cash-opening" className="text-sm text-slate-500">Fondo inicial</label>
 
           <input
+            id="cash-opening"
             type="number"
             className="mt-3 w-full rounded-xl border p-3 text-2xl font-bold"
             value={opening}

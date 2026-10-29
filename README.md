@@ -20,6 +20,22 @@ Pedido para llevar: el mesero registra el pedido → cocina lo prepara (Pendient
 - Un pedido Pagado o Entregado ya no aparece en la lista de cobro.
 - En efectivo, el monto recibido debe cubrir el total.
 
+## Flujo del proceso
+
+**Proceso:** Atención de pedidos para llevar en Asadero Duke's.
+
+### Identificación del proceso
+
+![Tabla de identificación del proceso](docs/tabla-1-identificacion.png)
+
+### Roles
+
+![Tabla de roles](docs/tabla-2-roles.png)
+
+### Estados del pedido
+
+![Tabla de estados del pedido](docs/tabla-3-estados.png)
+
 ## Interfaces
 | Interfaz | Ruta | Usuario | Se conecta con |
 |---|---|---|---|

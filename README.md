@@ -1,12 +1,19 @@
 # Asadero Duke's — Sistema de gestión de pedidos (prototipo frontend)
 
-> **Equipo 5:**: Ramírez Fuentes Valeria Del Carmen - Hernández García Adán Aristeo - González Flores Ricardo - Ferraez Peréz Angela Yesmin_
+> **Equipo 5:** Ramírez Fuentes Valeria Del Carmen - Hernández García Adán Aristeo - González Flores Ricardo - Ferraez Peréz Angela Yesmin_
 > **Asignatura:** Aplicaciones Web · Unidad 2 Frontend · Actividad Sumativa 2 (LITIID41)
 
 Prototipo frontend navegable y responsivo, con datos ficticios y estado local. **No** usa backend, API ni base de datos; los datos de demostración se guardan solo en el `localStorage` del navegador.
 
 ## Problema
-_(PENDIENTE: describir el problema del negocio que resuelve el sistema.)_
+En un asadero con venta de pedidos para llevar, la comunicación entre quien toma el pedido, la cocina y la caja suele hacerse de forma verbal o en notas de papel. Esto puede provocar pedidos que se pierden o se preparan en desorden, dudas sobre el estado de cada pedido, errores al calcular el total o el cambio, y un corte de caja difícil de cuadrar al final del día.
+
+Asadero Duke's propone un sistema web donde cada rol trabaja en su propia interfaz con la información que necesita:
+- **Mesero:** registra el pedido con sus productos y observaciones, lo envía a cocina y lo cobra.
+- **Cocina:** ve los pedidos pendientes y actualiza su estado (Pendiente, En preparación, Listo y Entregado).
+- **Administrador:** consulta los pedidos, administra productos, categorías y usuarios, y revisa el corte de caja y los reportes.
+
+El objetivo de esta etapa es un prototipo frontend navegable y responsivo que demuestre ese flujo con datos ficticios y estado local, sin backend, para validar las pantallas antes de conectar una API y una base de datos.
 
 ## Flujo seleccionado
 Pedido para llevar: el mesero registra el pedido → cocina lo prepara (Pendiente → En preparación → Listo) → el mesero lo cobra (Pagado) → el administrador lo consulta y hace el corte de caja.

@@ -60,7 +60,13 @@ flowchart LR
 ![Cobrar pedido](docs/mockups/05-cobrar-pedido.png)
 
 ### Capturas del prototipo
-_(PENDIENTE: agregar capturas en `docs/capturas/` a 375, 768 y 1280 px.)_
+| Pantalla | 375 px | 768 px | 1280 px |
+|---|---|---|---|
+| Login | ![](docs/capturas/login-375.png) | ![](docs/capturas/login-768.png) | ![](docs/capturas/login-1280.png) |
+| Dashboard admin | ![](docs/capturas/admin-375.png) | ![](docs/capturas/admin-768.png) | ![](docs/capturas/admin-1280.png) |
+| Nuevo pedido | ![](docs/capturas/nuevo-pedido-375.png) | ![](docs/capturas/nuevo-pedido-768.png) | ![](docs/capturas/nuevo-pedido-1280.png) |
+| Pedidos de cocina | ![](docs/capturas/cocina-375.png) | ![](docs/capturas/cocina-768.png) | ![](docs/capturas/cocina-1280.png) |
+| Cobrar pedido | ![](docs/capturas/cobrar-375.png) | ![](docs/capturas/cobrar-768.png) | ![](docs/capturas/cobrar-1280.png) |
 
 ## Tecnologías
 React 19, TypeScript, Vite, Tailwind CSS 4, React Router, lucide-react.

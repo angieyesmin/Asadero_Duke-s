@@ -41,7 +41,7 @@ Pedido para llevar: el mesero registra el pedido → cocina lo prepara (Pendient
 
 ### Estados del pedido
 
-![Tabla de estados del pedido](docs/tabla-3-estados.png)
+![Tabla de estados del pedido](docs/estadosp.png)
 
 ## Interfaces
 | Interfaz | Ruta | Usuario | Se conecta con |

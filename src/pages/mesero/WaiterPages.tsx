@@ -256,6 +256,7 @@ export function NewOrderPage() {
 
     const next: Order = {
       id: Math.max(1024, ...orders.map((order) => order.id)) + 1,
+      table: "Para llevar",
       waiter: user?.name || "Carlos Ramírez",
       status: "Pendiente",
       createdAt: new Date().toLocaleTimeString("es-MX", {

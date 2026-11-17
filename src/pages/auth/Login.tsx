@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from "react";
+
 import {
   ArrowLeft,
   Eye,
@@ -7,7 +8,9 @@ import {
   LockKeyhole,
   UserRound,
 } from "lucide-react";
+
 import { Link, useNavigate, useParams } from "react-router-dom";
+
 import { useAuth, type Role } from "../../context/AuthContext";
 
 const roleInfo: Record<
@@ -33,6 +36,7 @@ const roleInfo: Record<
 
 export default function Login() {
   const { role: param } = useParams();
+
   const role = (param || "admin") as Role;
   const info = roleInfo[role] || roleInfo.admin;
 
@@ -40,21 +44,38 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [show, setShow] = useState(false);
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const { login } = useAuth();
   const navigate = useNavigate();
 
-  const submit = (e: FormEvent<HTMLFormElement>) => {
+  // INICIAR SESIÓN
+  const submit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!username.trim() || !password.trim()) {
-      setError("Ingresa tu usuario y contraseña.");
+      setError("Ingresa tu correo electrónico y contraseña.");
       return;
     }
 
     setError("");
-    login(role, username);
-    navigate(info.home);
+    setLoading(true);
+
+    try {
+      // Validar credenciales con el backend y MySQL
+      await login(role, username, password);
+
+      // Redirigir según el rol
+      navigate(info.home, { replace: true });
+    } catch (error) {
+      setError(
+        error instanceof Error
+          ? error.message
+          : "No fue posible iniciar sesión.",
+      );
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -173,29 +194,34 @@ export default function Login() {
           {/* FORMULARIO */}
           <form onSubmit={submit} className="space-y-7">
 
-            {/* USUARIO */}
+            {/* CORREO ELECTRÓNICO */}
             <div>
               <label
                 htmlFor="username"
                 className="mb-3 block text-base font-semibold text-slate-700"
               >
-                Usuario
+                Correo electrónico
               </label>
 
               <div className="flex items-center gap-4 rounded-2xl border border-slate-200 bg-slate-50 px-5 py-5 transition focus-within:border-red-500 focus-within:bg-white focus-within:ring-4 focus-within:ring-red-100">
-                <UserRound size={23} className="shrink-0 text-slate-400" />
+
+                <UserRound
+                  size={23}
+                  className="shrink-0 text-slate-400"
+                />
 
                 <input
                   id="username"
-                  type="text"
+                  type="email"
                   value={username}
                   onChange={(e) => {
                     setUsername(e.target.value);
                     setError("");
                   }}
                   className="w-full bg-transparent text-base text-slate-900 outline-none placeholder:text-slate-400"
-                  placeholder="Ingresa tu usuario"
+                  placeholder="Ingresa tu correo electrónico"
                   autoComplete="username"
+                  required
                 />
               </div>
             </div>
@@ -210,7 +236,11 @@ export default function Login() {
               </label>
 
               <div className="flex items-center gap-4 rounded-2xl border border-slate-200 bg-slate-50 px-5 py-5 transition focus-within:border-red-500 focus-within:bg-white focus-within:ring-4 focus-within:ring-red-100">
-                <LockKeyhole size={23} className="shrink-0 text-slate-400" />
+
+                <LockKeyhole
+                  size={23}
+                  className="shrink-0 text-slate-400"
+                />
 
                 <input
                   id="password"
@@ -223,6 +253,7 @@ export default function Login() {
                   className="w-full bg-transparent text-base text-slate-900 outline-none placeholder:text-slate-400"
                   placeholder="Ingresa tu contraseña"
                   autoComplete="current-password"
+                  required
                 />
 
                 <button
@@ -233,7 +264,11 @@ export default function Login() {
                     show ? "Ocultar contraseña" : "Mostrar contraseña"
                   }
                 >
-                  {show ? <EyeOff size={23} /> : <Eye size={23} />}
+                  {show ? (
+                    <EyeOff size={23} />
+                  ) : (
+                    <Eye size={23} />
+                  )}
                 </button>
               </div>
             </div>
@@ -251,10 +286,12 @@ export default function Login() {
             {/* BOTÓN */}
             <button
               type="submit"
-              className={`w-full rounded-2xl py-5 text-lg font-bold text-white shadow-lg transition duration-200 hover:-translate-y-0.5 hover:shadow-xl ${info.color}`}
+              disabled={loading}
+              className={`w-full rounded-2xl py-5 text-lg font-bold text-white shadow-lg transition duration-200 hover:-translate-y-0.5 hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-60 ${info.color}`}
             >
-              Iniciar sesión
+              {loading ? "Verificando..." : "Iniciar sesión"}
             </button>
+
           </form>
 
           {/* PIE */}
@@ -263,6 +300,7 @@ export default function Login() {
               © {new Date().getFullYear()} Asadero Duke's
             </p>
           </div>
+
         </div>
       </section>
     </main>
